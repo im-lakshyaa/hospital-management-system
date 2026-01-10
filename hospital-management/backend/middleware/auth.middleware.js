@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import User from "../models/user";
+import User from "../models/User.js";
 
 const authMiddleware = async (req, res, next) => {
   try {
@@ -8,7 +8,7 @@ const authMiddleware = async (req, res, next) => {
       req.headers.authorization &&
       req.headers.authorization.startsWith("Bearer")
     ) {
-      token = req.header.authorization.split(" ")[1];
+      token = req.headers.authorization.split(" ")[1];
     }
     if (!token) {
       return res.status(401).json({ message: "Not authorized, no token" });
