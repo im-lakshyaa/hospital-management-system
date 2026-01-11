@@ -16,6 +16,7 @@ export const createPatient = async (req, res, next) => {
     } = req.body;
 
     
+    
     const userExists = await User.findOne({ email });
     if (userExists) {
       res.status(400);
